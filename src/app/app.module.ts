@@ -10,19 +10,23 @@ import { OrdenComponent } from './components/orden/orden.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
+import { CrearOrdenComponent } from './components/crear-orden/crear-orden.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrdenComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    CrearOrdenComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [OrdenService],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdenService } from '../../services/orden.service';
+import { Router } from '@angular/router';
+import { Orden } from 'src/app/models/orden';
 
 @Component({
   selector: 'app-orden',
@@ -7,9 +9,10 @@ import { OrdenService } from '../../services/orden.service';
 })
 export class OrdenComponent implements OnInit {
 
-  ordenList: {};
+  ordenList: Orden[];
 
-  constructor(private ordenService: OrdenService) {
+  constructor(private ordenService: OrdenService,
+      private router: Router) {
     this.CargarOrdenes();
    }
 
@@ -21,6 +24,7 @@ export class OrdenComponent implements OnInit {
     if(resultado) {
       this.ordenService.DeleteOrden(ordenId)
       .subscribe(resp => {
+        console.log(resp);
         this.CargarOrdenes();
       },
       error => {
@@ -34,8 +38,13 @@ export class OrdenComponent implements OnInit {
         this.ordenList = res;
       },
       error => {
+        this.ordenList = [];
         console.log(error);
       })
+    }
+
+    CrearOrden(){
+      this.router.navigate(['/crearOrden']);
     }
     
   }

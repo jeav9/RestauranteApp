@@ -1,0 +1,50 @@
+<h3>Crear nueva orden:</h3>
+
+<div>
+  <button class="btn btn-primary mb-4" (click)="Crear()">Crear <i class="fa fa-save" aria-hidden="true"></i></button>
+  <div class="form-group">
+    <label for="NombreCliente">Nombre del Cliente: </label>
+    <input type="text" name="NombreCliente" [(ngModel)]="orden.clientName" placeholder="Nombre del cliente" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="NombreCajero">Nombre del Cajero: </label>
+    <input type="text" name="NombreCajero" [(ngModel)]="orden.cashierName"  placeholder="Nombre del cajero" class="form-control">
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <div class="form-inline">
+        <label for="inputProducto">Producto:</label>
+        <select id="inputProducto" [(ngModel)]="detalleOrden.productId" class="form-control">
+          <option *ngFor="let producto of productoList" [value]="producto.id">{{producto.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-inline">
+        <label for="inputCantidad">Cantidad:</label>
+        <input type="number" class="form-control" name="inputCantidad" [(ngModel)]="detalleOrden.quantity">
+      </div>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-success" (click)="Agregar()">Agregar <i class="fa fa-plus"
+          aria-hidden="true"></i></button>
+    </div>
+  </div>
+
+  <div class="mt-5">
+  <h5>Detalle</h5>
+  <table class="table table-hover">
+    <thead>
+        <th>Producto</th>
+        <th>Cantidad</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let detalle of DetallesOrden">
+            <td>{{detalle.productId}}</td>
+            <td>{{detalle.quantity}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>
